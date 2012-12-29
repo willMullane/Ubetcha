@@ -5,3 +5,9 @@ will:
   profile_name: "willmull"
   #password: "100EARS83"
   #password_confirmation: "100EARS83"
+
+brian:
+  first_name: "Brian"
+  last_name: "Cassidy"
+  email: "briancas@hotmail.com"
+  profile_name: "bricas"
