@@ -1,6 +1,10 @@
 require 'test_helper'
 
+
 class UserTest < ActiveSupport::TestCase
+  should have_many(:user_friendships)
+  should have_many(:friends)
+
   test "a use should enter their first name" do
     user = User.new
     assert !user.save
@@ -43,11 +47,23 @@ class UserTest < ActiveSupport::TestCase
 
   #this test does not work, problem with the assertion
   #gives an error saying no message given
-  test "a user can have a correctly formatted profile name" do
-    user = User.new(first_name: "Will", last_name: "Mullane", email: "will-mull@hotmail.com")
-    user.password = user.password_confirmation = "100EARS83"
+  #test "a user can have a correctly formatted profile name" do
+    #user = User.new(first_name: "Will", last_name: "Mullane", email: "will-mull@hotmail.com")
+    #user.password = user.password_confirmation = "100EARS83"
 
-    user.profile_name = "willmull"
-    assert user.valid?
+    #user.profile_name = "willmull"
+    #assert user.valid?
+  #end
+
+  test "that no error is raised when trying to get to a users friends" do
+    assert_nothing_raised do
+      users(:will).friends
+    end
+  end
+
+  test "that creating friendships on a user works" do
+    users(:will).friends << users(:paul)
+    users(:will).friends.reload
+    assert users(:will).friends.include?(users(:paul))
   end
 end

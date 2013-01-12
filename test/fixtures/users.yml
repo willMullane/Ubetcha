@@ -11,3 +11,9 @@ brian:
   last_name: "Cassidy"
   email: "briancas@hotmail.com"
   profile_name: "bricas"
+
+paul:
+  first_name: "Paul"
+  last_name: "Newport"
+  email: "paulportbadger@hotmail.com"
+  profile_name: "paul80"
